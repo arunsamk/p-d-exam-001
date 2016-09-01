@@ -10,9 +10,9 @@ application.use(express.static(__dirname + '/public'));
 
 //Setting the home page
 application.get('*', function(request, response){
-	res.render('index');
+	response.sendFile('index');
 });
 
 application.listen(port, function(){
-	console.log('App is running on port: ' + port);
+	console.log('Application using response.sendFile is running on port: ' + port);
 });
