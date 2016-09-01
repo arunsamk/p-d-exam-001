@@ -20,7 +20,7 @@ angular.module('examApp', [
         controllerAs: 'main'
       })
     .when('/contact', {
-        templateUrl:'views/contact.html',
+        templateUrl:'views/contact.html'
         
         
     })
@@ -29,11 +29,11 @@ angular.module('examApp', [
     })
     .when('/article', {
         templateUrl : 'views/article.html'
-    })
-    .when('/job', {
+    }).when('/job', {
         templateUrl : 'views/jobs.html'
+    }).when('/addquest', {
+        templateUrl: 'views/addquestion.html'
     })
-    
    /*when('/profile', {
         templateUrl : 'modalContainer',
         controller : 'ProfileModalCtrl'
