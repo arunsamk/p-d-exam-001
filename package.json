@@ -1,0 +1,11 @@
+{
+	"name": "pdexam001",
+	"description": "Exam application to play around with system",
+	"main": "server.js",
+	"scripts": {
+		"start": "node server.js",
+	},
+	"dependencies": {
+		"express": "latest"
+	}
+}
