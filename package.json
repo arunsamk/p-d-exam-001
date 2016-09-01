@@ -1,11 +1,16 @@
 {
-	"name": "pdexam001",
-	"description": "Exam application to play around with system",
-	"main": "server.js",
-	"scripts": {
-		"start": "node server.js"
-	},
-	"dependencies": {
-		"express": "latest"
-	}
+  "name": "pdexam001",
+  "description": "Exam application to play around with system",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "body-parser": "1.15.2",
+    "express": "4.14.0",
+    "method-override": "2.3.6",
+    "mongoose": "4.5.10",
+    "morgan": "1.7.0",
+    "path": "0.12.7"
+  }
 }
