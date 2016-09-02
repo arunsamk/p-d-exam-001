@@ -81,3 +81,7 @@ text-align: center;
   /* Remove the bottom border on the jumbotron for visual effect */
  
 }
+
+.qbankdiv{
+  margin-top: -40px;
+}

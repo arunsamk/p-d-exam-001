@@ -8,7 +8,7 @@
  *
  * Main module of the application.
  */
-var exampApplication = angular.module('examApp', [
+var examApplication = angular.module('examApp', [
     'ngResource',
     'ngRoute'   
   ])
@@ -30,7 +30,12 @@ var exampApplication = angular.module('examApp', [
     }).when('/job', {
         templateUrl : 'views/jobs.html'
     }).when('/addquest', {
-        templateUrl: 'views/addquestion.html'
+        templateUrl: 'views/addquestion.html'        
+    })
+    .when('/questionbank',{ templateUrl: 'views/questionbank.html', controller: 'qbankCtrl'})
+    .when('/logadmin', {
+      templateUrl: 'views/login.html',
+      controller: 'loginCtrl'
     })
    /*when('/profile', {
         templateUrl : 'modalContainer',
@@ -45,7 +50,14 @@ var exampApplication = angular.module('examApp', [
 });
 */
 
-exampApplication.controller('questionCtrl', ['$scope', '$http', function($scope, $http){
+examApplication.controller('loginCtrl',['$scope', '$http', function($scope, $http){
+
+    $http.get('/logadmin').success(function(data){
+
+    });
+}]);
+
+examApplication.controller('questionCtrl', ['$scope', '$http', function($scope, $http){
 
     //when landing on the page get all the rows in the collection
     $http.get('/api/questions').success(function(data){
@@ -55,7 +67,7 @@ exampApplication.controller('questionCtrl', ['$scope', '$http', function($scope,
       console.log('Error' + data);
     });
 
-    //when submitting the add form, send the text node api
+    //when submitting the form, the question gets added in the collection
     $scope.createQuestion = function(){
       $http.post('/api/questions', $scope.formData).success(function(data){
         $scope.formData = {};
@@ -84,3 +96,24 @@ exampApplication.controller('questionCtrl', ['$scope', '$http', function($scope,
       });
     };
   }]);
+
+//var qbankPopulate = angular.module('examApp', ['ngRoute', 'ngResource']);
+
+examApplication.controller('MainCtrl', ['$scope', '$http', function ($scope, $http) {
+  $scope.rQuestion = function(){
+    $location.path('/questionbank');
+    console.log('Inside R Function');
+    var parameter = {
+      QuestCateg: 'R'
+    };
+    var config = {
+      param: parameter
+    };
+    $http.get('/api/questions', config).sucess(function(data){
+      $scope.questions = data;
+      console.log('Successful get request with data pop');
+    }).error(function(data){
+      console.log('Error' + data);
+    });
+  };
+}]);

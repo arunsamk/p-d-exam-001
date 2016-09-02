@@ -30,6 +30,7 @@ var Question = mongoose.model('dummyQuestions', questionSchema);
 
 //Making express to look in the public directory for (css, js, html .....).
 application.use(express.static(__dirname + '/public'));
+//application.use('/views/', express.static(__dirname + '/views'));
 application.use(morgan('dev'));
 application.use(bodyParser.urlencoded({ 'extended': true }));
 application.use(bodyParser.json());
@@ -137,6 +138,10 @@ application.delete('/api/questions/:question_id', function(request, response){
 application.get('*', function(request, response){
 	response.sendFile('index');
 });
+
+/*application.get('/logadmin', function(request, response){
+	response.render('login.html');
+});*/
 
 application.listen(port, function(){
 	console.log('Application using response.sendFile is running on port: ' + port);
