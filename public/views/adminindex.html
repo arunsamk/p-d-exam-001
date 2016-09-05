@@ -1,0 +1,44 @@
+<!-- Index page the front end view -->
+
+<!doctype html>
+<html>
+
+    <head>
+
+    	<!-- Meta Details -->
+
+        <meta charset="utf-8">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Analytics Questions</title>
+
+        <!--  Custom Style sheets and predefined style sheets of bootstrap favicon..  -->
+
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+        <!--<link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">-->
+        <link rel="stylesheet" type="text/css" href="/styles/main.css">
+        <link rel="shortcut icon" href="">
+        <!--<link rel="stylesheet" type="text/css" href="scripts/mystyle.css">-->                              
+    </head>
+
+    <body ng-app="examApp">
+
+    <!-- NAVIGATION BAR / MENU -->
+
+  <!--  <div ng-include="'views/navigation.html'"></div> -->
+    <div class="row" ng-view=""></div>
+    <div ng-include="'views/adfooter.html'"></div>
+
+               <!--  User created scripts and angular scripts  -->
+
+        <!--<script src="/node_modules/jquery/dist/jquery.min.js"></script>
+        <script src="/node_modules/angular/angular.min.js"></script>
+        <script src="/node_modules/angular-route/angular-route.min.js"></script>-->
+        <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.js"></script>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
+        <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.js"></script>
+       <script type="text/javascript" src="scripts/app.js"></script>
+       <!--<script type="text/javascript" src="scripts/controllers/navcontrol.js"></script>-->
+    </body>
+</html>

@@ -9,7 +9,7 @@ var methodOverride = require('method-override');
 var Schema = mongoose.Schema;
 
 //Making server file to assign port dynamically.
-var port = process.env.PORT || 7010;
+var port = process.env.PORT || 7070;
 
 // Connecting to MongoDB
 var connection = mongoose.connect('mongodb://localhost/crkappi');
@@ -28,8 +28,11 @@ var Question = mongoose.model('dummyQuestions', questionSchema);
 
 //-----------------------Configuration---------------------------------------
 
+//------------routing static files.....
 //Making express to look in the public directory for (css, js, html .....).
 application.use(express.static(__dirname + '/public'));
+application.use('/scripts', express.static(__dirname + '/scripts'));
+application.use('/styles', express.static(__dirname + '/styles'));
 //application.use('/views/', express.static(__dirname + '/views'));
 application.use(morgan('dev'));
 application.use(bodyParser.urlencoded({ 'extended': true }));
@@ -44,6 +47,8 @@ application.get('/api/questions', function(request, response){
 	// conditional selecting
 	//Acquring records with specific Question Category and Question Difficulty Level
 	console.log('Hello from Get request in server.js');
+	console.log('Value in request QuestCateg ' + request.query.QuestCateg);
+	console.log('Value in request from get ' + request);
 	if( request.query.QuestCateg && request.query.QuestDCateg ){
 		Question.find({ QuestCateg : request.query.QuestCateg, QuestDCateg : request.query.QuestDCateg }, function(err,questions){
 
@@ -135,7 +140,7 @@ application.delete('/api/questions/:question_id', function(request, response){
 });
 
 //Setting the home page
-application.get('*', function(request, response){
+application.get('/', function(request, response){
 	response.sendFile('index');
 });
 
