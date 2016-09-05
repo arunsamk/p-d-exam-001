@@ -48,7 +48,7 @@ application.get('/api/questions', function(request, response){
 	//Acquring records with specific Question Category and Question Difficulty Level
 	console.log('Hello from Get request in server.js');
 	console.log('Value in request QuestCateg ' + request.query.QuestCateg);
-	console.log('Value in request from get ' + request);
+	//console.log('Value in request from get ' + request);
 	if( request.query.QuestCateg && request.query.QuestDCateg ){
 		Question.find({ QuestCateg : request.query.QuestCateg, QuestDCateg : request.query.QuestDCateg }, function(err,questions){
 
@@ -61,12 +61,14 @@ application.get('/api/questions', function(request, response){
 
 		//Acquring records with specific Question Category
 		if( request.query.QuestCateg ){			
+			console.log('Getting Inside single selections');
 			Question.find( { QuestCateg : request.query.QuestCateg }, function(err, questions){
 
 				//In case of error return the error to reponse
 				if(err)
 					response.send(err);
 				response.json(questions);
+				console.log(questions);
 			});
 		}else{
 			//Acquring All records from MongoDB

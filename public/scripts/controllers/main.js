@@ -10,20 +10,20 @@
 
 angular.module('examApp').controller('MainCtrl', ['$scope', '$http', function($scope, $http){
 
-	$scope.rQuestion = function(){
-		console.log('Inside R Function');
-		var parameters = {
-			QuestCateg: 'R'
-		};
-		var config = {
-			param: parameters
-		};
-		$http.get('/api/questions', config).success(function(data){
-			$scope.questions = data;
-			console.log('Successful get request with data pop');
-		}).error(function(data){
-			console.log('Error' + data);
-		});
+	 $scope.rQuestion = function(){
+	 //console.log('Inside list question funtion');
+	 var parameters = {
+		QuestCateg: 'R'
+	};  
+	var config = {
+		params: parameters
 	};
-
+	$http.get('/api/questions', config).success(function(data){
+		$scope.questions = data;
+		 console.log('From dbcore.js --> ' + data);
+		 }).error(function(data){
+		 console.log('Error ' + data);
+		 });
+	 };
+	  
 }]);
