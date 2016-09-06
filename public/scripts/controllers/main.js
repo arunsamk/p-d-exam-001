@@ -7,23 +7,49 @@
  * # MainCtrl
  * Controller of the examApp
  */
+var eApplication = angular.module('examApp');
 
-angular.module('examApp').controller('MainCtrl', ['$scope', '$http', function($scope, $http){
-
+eApplication.controller('MainCtrl', ['$scope', '$http', function($scope, $http){
+	$scope.setQT = '';
 	 $scope.rQuestion = function(){
-	 //console.log('Inside list question funtion');
-	 var parameters = {
-		QuestCateg: 'R'
-	};  
-	var config = {
-		params: parameters
-	};
-	$http.get('/api/questions', config).success(function(data){
-		$scope.questions = data;
-		 console.log('From dbcore.js --> ' + data);
-		 }).error(function(data){
-		 console.log('Error ' + data);
-		 });
+	 	$scope.setQT = 'R';	 
 	 };
-	  
+	 $scope.mLearn=function(){
+	 	$scope.setQT = 'ML';
+	 };
+	 $scope.tabLeau=function(){
+	 	$scope.setQT = 'Tableau';
+	 };
+	 $scope.sqlQuestion=function(){
+	 	$scope.setQT = 'SQL';
+	 };
+	 $scope.sasQuestion=function(){
+	 	$scope.setQT = 'SAS';
+	 };	  
+}]);
+
+eApplication.factory('questSelectservice',['$scope',function($scope){
+	var choice = '';	
+	var swQT = $scope.setQT;
+	switch(swQT){
+		case 'R':
+		choice = 'R';
+		break;
+		case 'SAS':
+		choice = 'SAS';
+		break;
+		case 'ML':
+		choice = 'ML';
+		break;
+		case 'Tableau':
+		choice = 'Tableau';
+		break;
+		case 'SQL':
+		choice = 'SQL';
+		break;
+		default:
+		choice='';
+		break;
+	}
+	return choice;
 }]);

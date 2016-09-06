@@ -42,12 +42,17 @@ application.use(methodOverride());
 
 //routes----------------------------
 //get all Questions
+
+application.get('/api/chk', function(request, response){
+	console.log('This is Triggerring');
+	console.log('Value in request QuestCateg ' + request.query.QuestCateg);
+});
 application.get('/api/questions', function(request, response){
 
 	// conditional selecting
 	//Acquring records with specific Question Category and Question Difficulty Level
-	console.log('Hello from Get request in server.js');
-	console.log('Value in request QuestCateg ' + request.query.QuestCateg);
+	/*console.log('Hello from Get request in server.js');
+	console.log('Value in request QuestCateg ' + request.query.QuestCateg);*/
 	//console.log('Value in request from get ' + request);
 	if( request.query.QuestCateg && request.query.QuestDCateg ){
 		Question.find({ QuestCateg : request.query.QuestCateg, QuestDCateg : request.query.QuestDCateg }, function(err,questions){
@@ -61,14 +66,14 @@ application.get('/api/questions', function(request, response){
 
 		//Acquring records with specific Question Category
 		if( request.query.QuestCateg ){			
-			console.log('Getting Inside single selections');
+			//console.log('Getting Inside single selections');
 			Question.find( { QuestCateg : request.query.QuestCateg }, function(err, questions){
 
 				//In case of error return the error to reponse
 				if(err)
 					response.send(err);
 				response.json(questions);
-				console.log(questions);
+			//	console.log(questions);
 			});
 		}else{
 			//Acquring All records from MongoDB
@@ -151,5 +156,5 @@ application.get('/', function(request, response){
 });*/
 
 application.listen(port, function(){
-	console.log('Application using response.sendFile is running on port: ' + port);
+	console.log('Node Server is running on port: ' + port);
 });
