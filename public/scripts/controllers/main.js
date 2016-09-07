@@ -13,18 +13,23 @@ eApplication.controller('MainCtrl', ['$scope', '$http', function($scope, $http){
 	$scope.setQT = '';
 	 $scope.rQuestion = function(){
 	 	$scope.setQT = 'R';	 
+	 	console.log('R');
 	 };
 	 $scope.mLearn=function(){
 	 	$scope.setQT = 'ML';
+	 	console.log('ML');
 	 };
 	 $scope.tabLeau=function(){
 	 	$scope.setQT = 'Tableau';
+	 	console.log('Tableau');
 	 };
 	 $scope.sqlQuestion=function(){
 	 	$scope.setQT = 'SQL';
+	 	console.log('SQL');
 	 };
 	 $scope.sasQuestion=function(){
 	 	$scope.setQT = 'SAS';
+	 	console.log('SAS');
 	 };	  
 }]);
 

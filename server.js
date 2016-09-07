@@ -15,7 +15,7 @@ var port = process.env.PORT || 7070;
 var connection = mongoose.connect('mongodb://localhost/crkappi');
 
 // Defining Database Schema
-
+//Question Schema
 var questionSchema = new Schema({
 	QuestCateg: String,
 	QuestDCateg: String,
@@ -23,8 +23,19 @@ var questionSchema = new Schema({
 	AnswerTxt: String
 });
 
-//Defining a model in mongoose
+//Contact Schema
+var contactSchema = new Schema({
+	FirstName: String, Email: String, Phone: String, Subject: String, Message: String, MsgDate: { type: Date, default: Date.now }
+});
+
+//Resume Schema
+var resumeSchema = new Schema({
+	Name: String, Email: String, FileResume: { mime: String, bin: Buffer }
+});
+//Defining model for [Question, Contact, Resume] in mongoose
 var Question = mongoose.model('dummyQuestions', questionSchema);
+var Contact = mongoose.model('dumcontacts', contactSchema);
+var Resume = mongoose.model('dumresumes', resumeSchema)
 
 //-----------------------Configuration---------------------------------------
 
@@ -42,18 +53,8 @@ application.use(methodOverride());
 
 //routes----------------------------
 //get all Questions
-
-application.get('/api/chk', function(request, response){
-	console.log('This is Triggerring');
-	console.log('Value in request QuestCateg ' + request.query.QuestCateg);
-});
+// Question related database operations
 application.get('/api/questions', function(request, response){
-
-	// conditional selecting
-	//Acquring records with specific Question Category and Question Difficulty Level
-	/*console.log('Hello from Get request in server.js');
-	console.log('Value in request QuestCateg ' + request.query.QuestCateg);*/
-	//console.log('Value in request from get ' + request);
 	if( request.query.QuestCateg && request.query.QuestDCateg ){
 		Question.find({ QuestCateg : request.query.QuestCateg, QuestDCateg : request.query.QuestDCateg }, function(err,questions){
 
@@ -66,14 +67,12 @@ application.get('/api/questions', function(request, response){
 
 		//Acquring records with specific Question Category
 		if( request.query.QuestCateg ){			
-			//console.log('Getting Inside single selections');
 			Question.find( { QuestCateg : request.query.QuestCateg }, function(err, questions){
 
 				//In case of error return the error to reponse
 				if(err)
 					response.send(err);
-				response.json(questions);
-			//	console.log(questions);
+				response.json(questions);		
 			});
 		}else{
 			//Acquring All records from MongoDB
@@ -89,7 +88,6 @@ application.get('/api/questions', function(request, response){
 });
 
 // Create question and send back all question after creation
-
 application.post('/api/questions', function(request, response){
 
 	// Create a question, information comes from ajax request from angular
@@ -106,11 +104,9 @@ application.post('/api/questions', function(request, response){
 				response.send(err);
 
 			//Repopulating the view after insert a new row in the collection
-
 			Question.find(function(err, questions){
 
 				//if there is an error retrieving data, send the error.
-
 				if(err)
 					response.send(err);
 				response.json(questions);
@@ -122,11 +118,9 @@ application.post('/api/questions', function(request, response){
 });
 
 //deleting a quesion
-
 application.delete('/api/questions/:question_id', function(request, response){
 
 	// deleting or removing a question based on the id.
-
 	Question.remove({
 		_id : request.params.question_id
 	},function(err, question){
@@ -134,15 +128,45 @@ application.delete('/api/questions/:question_id', function(request, response){
 			response.send(err);
 
 		//get and return all questions after deletion of a question
-
 		Question.find(function(err, questions){
 
 			//if error retrieving data, send the error.
-
 			if(err)
 				response.send(err);
 			response.json(questions);
 		});
+	});
+});
+
+// Adding feedback content into mongoDB
+application.post('/api/contacts', function(request, response){	
+		console.log('A ok for new Insertion into mongoDB');
+		Contact.create({
+			FirstName : request.body.fname,
+			Email : request.body.email,
+			Phone : request.body.phone,
+			Subject : request.body.subject,
+			Message: request.body.message,
+			done : false
+		}, function(err, contacts){
+			if(err)
+				response.send(err);
+			response.json(contacts);
+		});
+});
+
+// Getting and storing a file / resume in mongodb
+application.post('/api/resumes', function(request, response){
+	console.log('Ready for Insertion');
+	Resume.create({
+		Name: request.body.name, 
+		Email: request.body.email, 
+		FileResume: request.body.file, 
+		done: false
+	}, function(err, resumes){
+		if(err)
+			response.send(err);
+		response.json(resumes);
 	});
 });
 

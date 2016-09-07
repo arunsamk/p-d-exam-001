@@ -1,15 +1,15 @@
- <div class="container-fill">
+ <div class="container-fill" ng-controller="jresumeCtrl">
 <div class="jumbotron">
    <h1 class="info"><font color="white"> Build Your Career</font></h1>
     <form class="form-horizontal">
     <div class="form-group">
         <!--<label1><font color="white">Name</font></label1>-->
-    <input type="text" class="name" placeholder=" Name">
+    <input type="text" class="name" placeholder=" Name" required ng-model="jform.name">
         </div>
     <div class=form-group>
        <!-- <label1><font color="white">Desired Location</font></label1>-->
         
-        <input type="email" class="location" placeholder="Email">
+        <input type="email" class="location" placeholder="Email" required ng-model="jform.email">
         </div>
    
         <!--<label1><font color="white">Upload ur Resume</font></label1>-->
@@ -20,10 +20,10 @@
     Upload Resume
 </label>
 <span class='label label-info' id="upload-file-info"></span></div>-->
-      <label class="struct5"><input type="file"  id="myFile" size="0" class="custom" ></label>
+      <label class="struct5"><input type="file"  name = "fileupload" id="myFile" size="0" class="custom" ng-model="jform.fileupload"></label>
         
         </div>
-         <button type="submit" class="pre-button" id="js-upload-submit" style="display:center"><font color="white">Submit</font></button>
+         <button type="submit" class="pre-button" id="js-upload-submit" style="display:center" ng-click="storeResume()"><font color="white">Submit</font></button>
          
     <!--<img src="images/Rubik-cube-black-2560x1440-wallpaper114543.jpg" width="100%" height="100%">-->
     
