@@ -25,19 +25,26 @@ var questionSchema = new Schema({
 
 //Contact Schema
 var contactSchema = new Schema({
-	FirstName: String, Email: String, Phone: String, Subject: String, Message: String, MsgDate: { type: Date, default: Date.now }
+	FirstName: String, 
+	Email: String, 
+	Phone: String, 
+	Subject: String, 
+	Message: String, 
+	MsgDate: { type: Date, default: Date.now }
 });
 
 //Resume Schema
 var resumeSchema = new Schema({
-	Name: String, Email: String, FileResume: { mime: String, bin: Buffer }
+	Name: String, 
+	Email: String, 
+	FileResume: { mime: String, bin: Buffer }
 });
 //Defining model for [Question, Contact, Resume] in mongoose
 var Question = mongoose.model('dummyQuestions', questionSchema);
 var Contact = mongoose.model('dumcontacts', contactSchema);
-var Resume = mongoose.model('dumresumes', resumeSchema)
+var Resume = mongoose.model('dumresumes', resumeSchema);
 
-//-----------------------Configuration---------------------------------------
+//-----------------------Configuration----------------------------------------
 
 //------------routing static files.....
 //Making express to look in the public directory for (css, js, html .....).
