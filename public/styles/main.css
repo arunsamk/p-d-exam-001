@@ -16,7 +16,9 @@ body {
   padding-left: 15px;
   padding-right: 15px;
 }
-
+.test-border{
+  border:3px solid red;
+}
 /* Custom page header */
 .header {
 border-bottom: 1px solid #e5e5e5;
@@ -82,7 +84,26 @@ text-align: center;
  
 }
 
+/* Styling included by (kudwi-Arun)*/
+/* Styling for questionbank.html page */
+/* For the div to appear below the navbar */
 .qbankdiv{
   margin-top: 100px;
-  margin-left: 5px;
+ /* margin-left: 5px;*/
 }
+
+/*Styling for side navigation  */
+.sidenav{
+    padding-top: 20px; background-color: #f1f1f1; height: 100%;
+}
+
+/*Making Panel collapsible*/
+/*#grow {
+    -moz-transition: height .5s;
+    -ms-transition: height .5s;
+    -o-transition: height .5s;
+    -webkit-transition: height .5s;
+    transition: height .5s;
+    height: 0;
+    overflow: hidden;
+  }*/

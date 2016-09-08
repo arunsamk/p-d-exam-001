@@ -1,18 +1,43 @@
 <div class="container-fluid">
-	<div class="row qbankdiv" ng-controller="qbankCtrl">
-		<div class="col-sm-4">
-			<button type="button" class="btn btn-primary btn-sm">R</button>
-			<button type="button" class="btn btn-primary btn-sm">SAS</button>
-			<button type="button" class="btn btn-primary btn-sm">Tableau</button>
-			<button type="button" class="btn btn-primary btn-sm">Enter 1</button>
-			<button type="button" class="btn btn-primary btn-sm">Enter 2</button>
-			<button type="button" class="btn btn-primary btn-sm">Enter 3</button>
-			<button type="button" class="btn btn-primary btn-sm">Enter 4</button>
+	<div class="row qbankdiv content" ng-controller="qbankCtrl">
+		<div class="col-sm-2 sidenav">
+			<button type="button" class="btn btn-primary " ng-click="rQuestion()">R</button>
+			<button type="button" class="btn btn-primary btn-sm" ng-click="mlQuestion()">Machine Learning</button>
+			<button type="button" class="btn btn-primary btn-sm" ng-click="tabQuestion()">Tableau</button>
+			<button type="button" class="btn btn-primary btn-sm" ng-click="sqlQuestion()">SQL</button>
+			<button type="button" class="btn btn-primary btn-sm" ng-click="sasQuestion()">SAS</button>			
+			<!-- <button type="button" class="btn btn-primary btn-sm" ng-click="">Enter 3</button>
+			<button type="button" class="btn btn-primary btn-sm" ng-click="">Enter 4</button> -->
 		</div>
-		<div class="col-sm-8">			
+		<div class="col-sm-8 col-sm-0ffset-3 text-left">			
 			<div ng-repeat="question in questions">
+				<hr>
+				<a href="" ng-model="collapsed" ng-click="collapsed=!collapsed">{{ question.QuestTxt }}</a>
+				<hr>
+				<div ng-show="collapsed">{{ question.AnswerTxt }}</div>
+				<hr>
+			<!--<div class="collapsible-div">
 				{{ question.QuestTxt }}
-				{{ question.AnswerTxt }}
+				<input type="button" class="btn btn-primary" data-toggle="collapse" data-target="#toggleDemo" value="Toggle Button">
+				<div id="toggleDemo" class="collapse in"> {{ question.AnswerTxt }}</div>
+			</div>-->
+				<!--<div class="container">
+					<div class="panel-group" id="accordion">
+						<div class="panel panel-success">
+							<div class="panel-heading">
+							<h4 class="panel-title">
+								<a data-t0ggle="collapse" data-parent="#accordion" data-target="#collapseOne" href="">{{ question.QuestTxt }}
+								<input type="button" class="btn btn-primary" data-toggle="collapse" data-target="#toggleDemo" value="+">
+								</a></h4>
+							</div>									
+							<div id="toggleDemo" class="panel-collapse collapse">
+								<div  class="panel-body">
+									{{ question.AnswerTxt }}
+								</div>							
+							</div>
+						</div>
+					</div>
+				</div> -->
 			</div>		
 		</div>
 

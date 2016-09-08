@@ -373,8 +373,10 @@ background-image: url(Rubik-cube-black-2560x1440-wallpaper114543.jpg);
 .btn{
   font-size: 20px;
     width: 300px;
-    margin-left: 440px;
-}
+   }
+   .btn-margin{
+     margin-left: 440px;
+   }
 
 
 .pre-button{
