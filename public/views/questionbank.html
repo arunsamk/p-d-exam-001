@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container">
 	<div class="row qbankdiv content" ng-controller="qbankCtrl">
 		<div class="col-sm-2 sidenav">
 			<button type="button" class="btn btn-primary " ng-click="rQuestion()">R</button>
@@ -9,35 +9,27 @@
 			<!-- <button type="button" class="btn btn-primary btn-sm" ng-click="">Enter 3</button>
 			<button type="button" class="btn btn-primary btn-sm" ng-click="">Enter 4</button> -->
 		</div>
-		<div class="col-sm-8 col-sm-0ffset-3 text-left">			
-			<div ng-repeat="question in questions">
-				<hr>
-				<a href="" ng-model="collapsed" ng-click="collapsed=!collapsed">{{ question.QuestTxt }}</a>
-				<hr>
-				<div ng-show="collapsed">{{ question.AnswerTxt }}</div>
-				<hr>
-			<!--<div class="collapsible-div">
-				{{ question.QuestTxt }}
-				<input type="button" class="btn btn-primary" data-toggle="collapse" data-target="#toggleDemo" value="Toggle Button">
-				<div id="toggleDemo" class="collapse in"> {{ question.AnswerTxt }}</div>
-			</div>-->
+		<div class="col-sm-8 text-left">			
+			<div ng-repeat="question in questions">	
+				<div class="qbank-questiondiv"> 
+					<div class="col-sm-11">{{ question.QuestTxt }}</div>
+					<button class="qbankbutton" type = "button" ng-model="collapsed" ng-click="collapsed=!collapsed; changeVal(val)">{{ val }}</button>
+				</div>
+				<div class="qbank-answerdiv" ng-show="collapsed">{{ question.AnswerTxt }}</div>
 				<!--<div class="container">
-					<div class="panel-group" id="accordion">
+					<div class="panel-group">
 						<div class="panel panel-success">
 							<div class="panel-heading">
-							<h4 class="panel-title">
-								<a data-t0ggle="collapse" data-parent="#accordion" data-target="#collapseOne" href="">{{ question.QuestTxt }}
-								<input type="button" class="btn btn-primary" data-toggle="collapse" data-target="#toggleDemo" value="+">
-								</a></h4>
-							</div>									
-							<div id="toggleDemo" class="panel-collapse collapse">
-								<div  class="panel-body">
-									{{ question.AnswerTxt }}
-								</div>							
+								<h4 class="panel-title">
+									 <div> {{ question.QuestTxt }} <button type = "button" ng-model="collapsed" ng-click="collapsed=!collapsed">Click-Here</button></div>
+								</h4>
+							</div>
+							<div id="collapse1" class="panel-collapse collapse">
+								<div class="panel-body"><div ng-show="collapsed">{{ question.AnswerTxt }}</div></div>
 							</div>
 						</div>
 					</div>
-				</div> -->
+				</div>-->
 			</div>		
 		</div>
 

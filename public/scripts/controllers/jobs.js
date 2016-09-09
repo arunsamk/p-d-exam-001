@@ -27,7 +27,7 @@ eApplication.controller('jresumeCtrl', ['$scope','$http', function ($scope, $htt
 		console.log('Name ' + $scope.jform.name);
 		console.log('Email ' + $scope.jform.email);
 		var fileReader = new FileReader();
-		fileReader.readAsDataUrl($scope.jform.fileupload, $scope).then(function(result){
+		fileReader.readAsDataURL($scope.jform.fileupload, $scope).then(function(result){
 			$scope.filesrc = result;
 		});
 		console.log('File ' + $scope.filesrc);

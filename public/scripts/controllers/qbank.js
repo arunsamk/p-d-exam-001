@@ -5,6 +5,7 @@ eApplication.controller('qbankCtrl', ['$scope', '$http', 'shareQuestionService',
 	// Choice of Question Category from previous page and based on the choice populating values.
 	//console.log('Triggerring question bank controller');
 	//console.log('Value passed in service' + shareQuestionService);
+	$scope.val = 'v';
 	var choice = shareQuestionService.choice;
 	//console.log('value of Choice in qbankCtrl  ' + choice);
 	var parameters = {
@@ -92,5 +93,14 @@ eApplication.controller('qbankCtrl', ['$scope', '$http', 'shareQuestionService',
 		}).error(function(data){
 			console.log('Error ' + data);
 		});
+	};
+	$scope.changeVal = function(val){
+		if( $scope.val == 'v' ){
+			$scope.val = 'v';
+		}else{
+			if ( $scope.val == 'v' ){
+				$scope.val = 'v';
+			}
+		}
 	};
 }]);

@@ -97,13 +97,46 @@ text-align: center;
     padding-top: 20px; background-color: #f1f1f1; height: 100%;
 }
 
-/*Making Panel collapsible*/
-/*#grow {
-    -moz-transition: height .5s;
-    -ms-transition: height .5s;
-    -o-transition: height .5s;
-    -webkit-transition: height .5s;
-    transition: height .5s;
-    height: 0;
-    overflow: hidden;
-  }*/
+/* Styling for Question section*/
+.qbank-questiondiv{
+  background-color: #C6E5F0;
+  padding: 10px 10px;
+  outline: none;
+  font-size: 20px;
+  color: #000000;
+  border: none;
+  border-radius: 10px;
+}
+
+/* Styling for Answer section*/
+.qbank-answerdiv{
+  background-color: #CCEAC9;
+  padding: 10px 10px;
+  outline: none;
+  font-size: 20px;
+  color: #000000;
+  border: none;
+  border-radius: 10px;
+}
+
+/* Styling for button in Question Section*/
+.qbankbutton{
+  padding: 10px 10px;
+  font-size: 15px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 9px #999;
+}
+
+.qbankbutton:hover {background-color: #3e8e41}
+
+.qbankbutton:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
