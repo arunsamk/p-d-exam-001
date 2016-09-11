@@ -1,32 +1,14 @@
-var eApplication = angular.module('examApp');
 
-eApplication.directive('file', [function() {
-	var fileInput = function($parse){
-		return {		
-			restrict: 'EA',
-			template: "<input type='file' />",
-			replace: true,
-			link: function (scope, element, attrs) {
-				var modelGet = $parse(attrs.fileInput);
-				var modelSet = modelGet.assign;
-				var ngClick = $parse(attrs.ngClick);
-				var updateModel = function(){
-					scope.$apply(function(){
-						modelSet(scope, element[0].files[0]);
-						onClick(scope);
-					});
-				};
-				element.bind('change', updateModel);
-			}
-		};
-	};
-}]);
+//var eApplication = angular.module('examApp');
 
-eApplication.controller('jresumeCtrl', ['$scope','$http', function ($scope, $http, fileReader) {
+eApplication.controller('jresumeCtrl', ['$scope','$http', 'multiPartform', function ($scope, $http, multiPartform) {
 	$scope.storeResume = function(){
-		console.log('Name ' + $scope.jform.name);
+		$scope.customer = {};
+		var uploadUrl = '/upload';
+		multiPartform.post(uploadUrl, $scope.customer);
+		/*console.log('Name ' + $scope.jform.name);
 		console.log('Email ' + $scope.jform.email);
-		var fileReader = new FileReader();
+		/*var fileReader = new FileReader();
 		fileReader.readAsDataURL($scope.jform.fileupload, $scope).then(function(result){
 			$scope.filesrc = result;
 		});
@@ -40,6 +22,6 @@ eApplication.controller('jresumeCtrl', ['$scope','$http', function ($scope, $htt
 			console.log(data);
 		}).error(function(data){
 			console.log('Error ' + data);
-		});
+		});*/
 	};
 }]);
