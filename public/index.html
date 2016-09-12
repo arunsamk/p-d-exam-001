@@ -10,7 +10,8 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+    <!--<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">-->
+    <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="styles/main.css">
     <!--<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />-->
       
@@ -65,10 +66,15 @@
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
-    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.js"></script>
-    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
-    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.js"></script>
-    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-resource.js"></script>
+    <!-- Links to pre-defined script files -->
+    <!--<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.js"></script>-->
+    <script type="text/javascript" src="node_modules/jquery/dist/jquery.js"></script>
+    <!--<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>-->
+    <script type="text/javascript" src="node_modules/angular/angular.js"></script>
+    <!--<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.js"></script>-->
+    <script type="text/javascript" src="node_modules/angular-route/angular-route.js"></script>
+    <!--<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-resource.js"></script>-->
+    <script type="text/javascript" src="node_modules/angular-resource/angular-resource.js"></script>
     <!--<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-sanitize.js"></script>
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-touch.js"></script>
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-cookies.js"></script> -->
@@ -96,7 +102,13 @@
         <script type="text/javascript" src="scripts/controllers/adminqbank.js"></script>
         <script type="text/javascript" src="scripts/controllers/contactus.js"></script>
         <script type="text/javascript" src="scripts/controllers/jobs.js"></script>
-        
+
+        <!-- links to custom directives -->
+        <script type="text/javascript" src="scripts/directives/filemodel.js"></script>
+
+        <!--links to custom services-->
+        <script type="text/javascript" src="scripts/services/sharequestionservice.js"></script>
+        <script type="text/javascript" src="scripts/services/multipartform.js"></script>              
       <!--<script src="scripts/resume.js"></script>-->
      <!--<script src="scripts/carousel.js"></script> -->
         <!-- endbuild -->

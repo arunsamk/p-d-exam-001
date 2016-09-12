@@ -4,6 +4,8 @@ var application = express();
 var mongoose  = require('mongoose');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
+var multer = require('multer');
+var router = express.Router();
 var path = require('path');
 var methodOverride = require('method-override');
 var Schema = mongoose.Schema;
@@ -49,9 +51,10 @@ var Resume = mongoose.model('dumresumes', resumeSchema);
 //------------routing static files.....
 //Making express to look in the public directory for (css, js, html .....).
 application.use(express.static(__dirname + '/public'));
-application.use('/scripts', express.static(__dirname + '/scripts'));
+application.use('/node_modules', express.static(__dirname + '/node_modules'));
+application.use('/scripts', express.static(__dirname + '/scripts/'));
 application.use('/styles', express.static(__dirname + '/styles'));
-//application.use('/views/', express.static(__dirname + '/views'));
+application.use(multer({dest: __dirname + '/uploads/'}).any());
 application.use(morgan('dev'));
 application.use(bodyParser.urlencoded({ 'extended': true }));
 application.use(bodyParser.json());
@@ -59,6 +62,15 @@ application.use(bodyParser.json({ type: 'application/vnd.api+json'}));
 application.use(methodOverride());
 
 //routes----------------------------
+
+application.post('/upload', function(request, response){
+	console.log(request.body); 
+	//console.log(request);
+	console.log('Files : ' + request.files); 
+	console.log('Name : ' + request.body.name);
+	response.json({ success: true });
+});
+
 //get all Questions
 // Question related database operations
 application.get('/api/questions', function(request, response){
@@ -180,6 +192,10 @@ application.post('/api/resumes', function(request, response){
 //Setting the home page
 application.get('/', function(request, response){
 	response.sendFile('index');
+});
+
+application.get('/logadmin', function(request, response){
+	response.sendFile('login');
 });
 
 /*application.get('/logadmin', function(request, response){

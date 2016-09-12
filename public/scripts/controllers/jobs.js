@@ -5,6 +5,8 @@ eApplication.controller('jresumeCtrl', ['$scope','$http', 'multiPartform', funct
 	$scope.storeResume = function(){
 		$scope.customer = {};
 		var uploadUrl = '/upload';
+		console.log('$scope.customer: ' + $scope.customer);
+		console.log('uploadurl ' + uploadUrl);
 		multiPartform.post(uploadUrl, $scope.customer);
 		/*console.log('Name ' + $scope.jform.name);
 		console.log('Email ' + $scope.jform.email);

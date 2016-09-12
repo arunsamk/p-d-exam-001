@@ -1,11 +1,12 @@
 eApplication.service('multiPartform', ['$http', function($http){
-	this.post = function(uploadUrl, data){
+	this.post = function(uploadUrl, data){		
 		var fd  = new FormData();
 		for ( var key in data )
-			fd.append(key, data[key]);
+			fd.append(key, data[key]);				
 		$http.post(uploadUrl, fd, {
 			transformRequest: angular.identity,
-			headers: { 'Content-Type': undefined }
+			headers: { 'Content-Type': undefined }			
 		});
+		console.log('upload url' + uploadUrl);		
 	};
 }]);
