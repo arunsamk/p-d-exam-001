@@ -13,7 +13,7 @@
 			<div ng-repeat="question in questions">	
 				<div class="qbank-questiondiv"> 
 					<div class="col-sm-11">{{ question.QuestTxt }}</div>
-					<button class="qbankbutton" type = "button" ng-model="collapsed" ng-click="collapsed=!collapsed; changeVal(val)">{{ val }}</button>
+					<button class="qbankbutton" type = "button" ng-model="collapsed" ng-click="collapsed=!collapsed; changeVal(val)"></button>
 				</div>
 				<div class="qbank-answerdiv" ng-show="collapsed">{{ question.AnswerTxt }}</div>
 				<!--<div class="container">

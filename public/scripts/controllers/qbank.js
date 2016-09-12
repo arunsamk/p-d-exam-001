@@ -94,7 +94,7 @@ eApplication.controller('qbankCtrl', ['$scope', '$http', 'shareQuestionService',
 			console.log('Error ' + data);
 		});
 	};
-	$scope.changeVal = function(val){
+	/*$scope.changeVal = function(val){
 		if( $scope.val == 'v' ){
 			$scope.val = 'v';
 		}else{
@@ -102,5 +102,5 @@ eApplication.controller('qbankCtrl', ['$scope', '$http', 'shareQuestionService',
 				$scope.val = 'v';
 			}
 		}
-	};
+	};*/
 }]);
