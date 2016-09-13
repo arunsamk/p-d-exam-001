@@ -1,9 +1,14 @@
 
 //var eApplication = angular.module('examApp');
 
-eApplication.controller('jresumeCtrl', ['$scope','$http', 'multiPartform', function ($scope, $http, multiPartform) {
+eApplication.controller('jresumeCtrl', ['$scope','$http', 'multipartForm', function ($scope, $http, multipartForm) {
 	$scope.storeResume = function(){
-		$scope.customer = {};
+		var file = $scope.customer.uploadFile;
+		console.log('File is ');
+		console.dir(file);
+		var uploadUrl = '/fileUpload';
+		multipartForm.uploadFileToUrl(file, uploadUrl);
+	/*	$scope.customer = {};
 		var uploadUrl = '/upload';
 		console.log('$scope.customer: ' + $scope.customer);
 		console.log('uploadurl ' + uploadUrl);
