@@ -63,7 +63,7 @@ application.use(methodOverride());
 
 //routes----------------------------
 
-application.post('/upload', function(request, response){
+application.post('/fileupload', function(request, response){
 	console.log(request.body); 
 	//console.log(request);
 	console.log('Files : ' + request.files); 
