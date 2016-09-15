@@ -7,6 +7,7 @@ eApplication.controller('jresumeCtrl', ['$scope','$http', 'multipartForm', funct
 		console.log('File is ');
 		console.dir(file);
 		var uploadUrl = '/fileUpload';
+		console.log(file.name);
 		multipartForm.uploadFileToUrl(file, uploadUrl);
 	/*	$scope.customer = {};
 		var uploadUrl = '/upload';
