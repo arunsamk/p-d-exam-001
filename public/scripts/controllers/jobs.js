@@ -3,33 +3,23 @@
 
 eApplication.controller('jresumeCtrl', ['$scope','$http', 'multipartForm', function ($scope, $http, multipartForm) {
 	$scope.storeResume = function(){
-		var file = $scope.customer.uploadFile;
-		console.log('File is ');
-		console.dir(file);
+		var file = $scope.jform.uploadFile;
+		//console.log('File is ');
+		//console.dir(file);
 		var uploadUrl = '/fileUpload';
-		console.log(file.name);
-		multipartForm.uploadFileToUrl(file, uploadUrl);
-	/*	$scope.customer = {};
-		var uploadUrl = '/upload';
-		console.log('$scope.customer: ' + $scope.customer);
-		console.log('uploadurl ' + uploadUrl);
-		multiPartform.post(uploadUrl, $scope.customer);
-		/*console.log('Name ' + $scope.jform.name);
-		console.log('Email ' + $scope.jform.email);
-		/*var fileReader = new FileReader();
-		fileReader.readAsDataURL($scope.jform.fileupload, $scope).then(function(result){
-			$scope.filesrc = result;
-		});
-		console.log('File ' + $scope.filesrc);
-		$scope.jform.file.upload = $scope.filesrc;
-		console.log('file src value ' + $scope.filesrc);
-
+		//console.log('ORIGINAL FILE NAME : ' + file.name);
+		multipartForm.uploadFileToUrl(file, uploadUrl);		
+	};
+	clearuploaddb = function(file){
+		//console.log('INSIDE CLEARDB FUNCTION');		
+		//console.log('FILE NAME in clearuploaddb function ' + file.name);
+		$scope.jform.fname = file.name;
+		//console.log('Value passed into $scope ' + $scope.jform.fname);
 		$http.post('/api/resumes', $scope.jform).success(function(data){
 			$scope.jform = {};
-			$scope.resumes = data;
-			console.log(data);
+			//console.log('Resume details successfully put in mongodb');			
 		}).error(function(data){
 			console.log('Error ' + data);
-		});*/
+		});
 	};
 }]);

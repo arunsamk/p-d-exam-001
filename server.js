@@ -32,42 +32,63 @@ var contactSchema = new Schema({
 	Phone: String, 
 	Subject: String, 
 	Message: String, 
-	MsgDate: { type: Date, default: Date.now }
+	MsgDate: String
+	//{ type: Date, default: Date.now }
 });
 
 //Resume Schema
 var resumeSchema = new Schema({
 	Name: String, 
 	Email: String, 
-	FileResume: { mime: String, bin: Buffer }
+	OriginalFileName: String,
+	NewFileName: String,
+	FileLocation: String,
+	FileUploadDate: String
+	//{ type:Date, default: Date.now }
 });
+
 //Defining model for [Question, Contact, Resume] in mongoose
 var Question = mongoose.model('dummyQuestions', questionSchema);
 var Contact = mongoose.model('dumcontacts', contactSchema);
 var Resume = mongoose.model('dumresumes', resumeSchema);
 
 //-----------------------Configuration----------------------------------------
-
 //------------routing static files.....
 //Making express to look in the public directory for (css, js, html .....).
 application.use(express.static(__dirname + '/public'));
 application.use('/node_modules', express.static(__dirname + '/node_modules'));
 application.use('/scripts', express.static(__dirname + '/scripts/'));
 application.use('/styles', express.static(__dirname + '/styles'));
-application.use(multer({dest: __dirname + '/uploads/'}).any());
+/*application.use(multer({ dest: __dirname + '/uploads',
+	rename: function(fieldname, filename){
+		//filename = originalname;
+		return filename + '_' + Date.now();
+	}
+}).single('file'));*/
+//application.use(multer({dest: __dirname + '/uploads/'}).any());
 application.use(morgan('dev'));
 application.use(bodyParser.urlencoded({ 'extended': true }));
 application.use(bodyParser.json());
 application.use(bodyParser.json({ type: 'application/vnd.api+json'}));
 application.use(methodOverride());
 
-//routes----------------------------
+//----------Storing uploaded files in its original name
+var storage = multer.diskStorage({
+	destination:function(request, file, cb){
+		cb(null, __dirname + '/uploads');
+	},
+	filename:function(request, file, cb){
+		var d = new Date();
+		var datetime = d.getDate() + '-' + d.getMonth() + '-' + d.getFullYear() + '_' + d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
+		cb(null, Date.now()+'-'+file.originalname);
+		//cb(null, file.originalname + '_' + Date.now() + path.extname(file.originalname));
+	}
+});
+var upload = multer({storage: storage});
 
-application.post('/fileupload', function(request, response){
-	console.log(request.body); 
-	//console.log(request);
-	console.log('Files : ' + request.files); 
-	console.log('Name : ' + request.body.name);
+//routes----------------------------
+application.post('/fileupload', upload.single('file'), function(request, response){	
+	
 	response.json({ success: true });
 });
 
@@ -159,13 +180,16 @@ application.delete('/api/questions/:question_id', function(request, response){
 
 // Adding feedback content into mongoDB
 application.post('/api/contacts', function(request, response){	
-		console.log('A ok for new Insertion into mongoDB');
+		//console.log('A ok for new Insertion into mongoDB');
+		var d = new Date();
+		var datetime = d.getDate() + '-' + d.getMonth() + '-' + d.getFullYear() + '-' + d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
 		Contact.create({
 			FirstName : request.body.fname,
 			Email : request.body.email,
 			Phone : request.body.phone,
 			Subject : request.body.subject,
 			Message: request.body.message,
+			MsgDate: datetime,
 			done : false
 		}, function(err, contacts){
 			if(err)
@@ -176,11 +200,17 @@ application.post('/api/contacts', function(request, response){
 
 // Getting and storing a file / resume in mongodb
 application.post('/api/resumes', function(request, response){
-	console.log('Ready for Insertion');
+	//console.log('Ready for Insertion');
+	var d = new Date();
+	var datetime = d.getDate() + '-' + d.getMonth() + '-' + d.getFullYear() + '-' + d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
+	flocation = '/uploads/';
 	Resume.create({
 		Name: request.body.name, 
 		Email: request.body.email, 
-		FileResume: request.body.file, 
+		OriginalFileName: request.body.fname,
+		NewFileName: request.body.fname+'_'+datetime,
+		FileLocation: flocation,
+		FileUploadDate: datetime,
 		done: false
 	}, function(err, resumes){
 		if(err)
