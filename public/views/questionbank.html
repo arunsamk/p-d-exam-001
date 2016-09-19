@@ -1,16 +1,27 @@
 <div class="container qbankpage" ng-controller="qbankCtrl">
 	<div class="row content qbankdiv " >
-		<div class="col-sm-2 sidenav">
-			<div class="list-group text-center">
+		<div class="col-sm-2 sidenav navbar-inverse navbar-fixed-left">
+			<div class="container">
+			<ul class="nav navbar-nav">
+				<li><button type="button" class="qbank-button" ng-click="rQuestion()">R</button></li>
+				<li><button type="button" class="qbank-button" ng-click="mlQuestion()">Machine Learning</button></li>
+				<li><button type="button" class="qbank-button" ng-click="tabQuestion()">Tableau</button></li>
+				<li><button type="button" class="qbank-button" ng-click="sqlQuestion()">SQL</button></li>
+				<li><button type="button" class="qbank-button" ng-click="sasQuestion()">SAS</button></li>
+			</ul>
+			</div>
+		</div>
+		<!--<div class="col-sm-2 sidenav">-->
+			<!--<div class="list-group text-center">
 				<button type="button" class="list-group-item list-group-item-info qbank-button" ng-click="rQuestion()">R</button>
 				<button type="button" class="list-group-item list-group-item-info qbank-button" ng-click="mlQuestion()">Machine Learning</button>
 				<button type="button" class="list-group-item list-group-item-info qbank-button" ng-click="tabQuestion()">Tableau</button>
 				<button type="button" class="list-group-item list-group-item-info qbank-button" ng-click="sqlQuestion()">SQL</button>
-				<button type="button" class="list-group-item list-group-item-info qbank-button" ng-click="sasQuestion()">SAS</button>
+				<button type="button" class="list-group-item list-group-item-info qbank-button" ng-click="sasQuestion()">SAS</button>-->
 				<!-- <button type="button" class="btn btn-primary btn-sm" ng-click="">Enter 3</button>
 				<button type="button" class="btn btn-primary btn-sm" ng-click="">Enter 4</button> -->
-			</div>
-		</div>		
+			<!--</div>-->
+		<!--</div>-->
 		<div class="col-sm-10 text-left">						
 			<div class="container">
 				<div class="panel-group">
