@@ -8,9 +8,15 @@ eApplication.controller('qbankCtrl', ['$scope', '$http', 'shareQuestionService',
 	$scope.val = 'v';
 	var choice = shareQuestionService.choice;
 	//console.log('value of Choice in qbankCtrl  ' + choice);
-	var parameters = {
-		QuestCateg: choice
-	};
+	if(choice){
+		var parameters = {
+			QuestCateg: choice
+		};
+	}else{
+		var parameters = {
+			QuestCateg: 'R'
+		};
+	}
 	var config = {
 		params: parameters
 	};

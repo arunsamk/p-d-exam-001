@@ -141,8 +141,7 @@ h3{
 .crack{
    padding-left: 20px; 
 }
-    
-}
+
 .style4{
     width: 100%;
    line-height: 1px;
@@ -365,14 +364,11 @@ background-image: url(Rubik-cube-black-2560x1440-wallpaper114543.jpg);
 background-image: url(Rubik-cube-black-2560x1440-wallpaper114543.jpg);
  height: 400px;
     padding:300px;
-    
-   
-    
-}
+ }
 
 .btn{
-  font-size: 20px;
-    width: 300px;
+     font-size: 20px;
+    max-width: 300px;
    }
    .btn-margin{
      margin-left: 440px;

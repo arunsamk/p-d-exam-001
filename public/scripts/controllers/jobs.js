@@ -17,6 +17,7 @@ eApplication.controller('jresumeCtrl', ['$scope','$http', 'multipartForm', funct
 		//console.log('Value passed into $scope ' + $scope.jform.fname);
 		$http.post('/api/resumes', $scope.jform).success(function(data){
 			$scope.jform = {};
+			angular.element("input[type='file']").val(null); //clears the file input --need to write a directive for this--
 			//console.log('Resume details successfully put in mongodb');			
 		}).error(function(data){
 			console.log('Error ' + data);

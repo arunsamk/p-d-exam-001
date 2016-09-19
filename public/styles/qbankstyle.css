@@ -1,0 +1,93 @@
+/* Styling included by (kudwi-Arun)*/
+/* Styling for questionbank.html page */
+/* For the div to appear below the navbar */
+.qbankdiv{
+  margin-top: 100px;
+  /*margin-left: 5px;*/
+  height: 100%;
+}
+
+/*Styling for side navigation  */
+.sidenav{
+    padding-top: 50px; 
+    background-color: #f1f1f1; 
+    max-height: 100%;
+
+}
+
+/* Styling for Question section*/
+/*.qbank-questiondiv{
+  background-color: #C6E5F0;
+  padding: 10px 10px;
+  outline: none;
+  font-size: 20px;
+  color: #000000;
+  border: none;
+  border-radius: 10px;
+  margin-bottom: 0;
+  border-radius: 0;
+  max-height: 2000px;
+  max-width:  2000px;
+}*/
+
+/* Styling for Answer section*/
+/*.qbank-answerdiv{
+  margin-left: 0;
+  background-color: #CCEAC9;
+  padding: 10px 10px;
+  outline: none;
+  font-size: 20px;
+  color: #000000;
+  border: none;
+  border-radius: 10px;
+  margin-bottom: 0;
+  border-radius: 0;
+  max-width:  2000px;
+}*/
+
+/* Styling for button in Question Section*/
+/*.qbankbutton{
+  margin-left: 0;
+  padding: 10px 10px;
+  font-size: 15px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 9px #999;
+}
+
+.qbankbutton:hover {background-color: #3e8e41}
+
+.qbankbutton:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}*/
+.test-border{
+  border: 5px;
+  border-style: solid;
+  border-color: black;
+}
+
+.questpanelButton{
+padding: 0;
+border: none;
+background: none;
+}
+
+.qbank-button{
+  font-size: 15px;
+  font-weight: bold;
+  margin-bottom: 0;
+  border-radius: 0;
+}
+.qbankpage{
+   background-color: #f1f1f1; 
+}
+.qsection{
+  border-left: 1px solid gray;
+}

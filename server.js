@@ -59,13 +59,6 @@ application.use(express.static(__dirname + '/public'));
 application.use('/node_modules', express.static(__dirname + '/node_modules'));
 application.use('/scripts', express.static(__dirname + '/scripts/'));
 application.use('/styles', express.static(__dirname + '/styles'));
-/*application.use(multer({ dest: __dirname + '/uploads',
-	rename: function(fieldname, filename){
-		//filename = originalname;
-		return filename + '_' + Date.now();
-	}
-}).single('file'));*/
-//application.use(multer({dest: __dirname + '/uploads/'}).any());
 application.use(morgan('dev'));
 application.use(bodyParser.urlencoded({ 'extended': true }));
 application.use(bodyParser.json());
@@ -88,7 +81,6 @@ var upload = multer({storage: storage});
 
 //routes----------------------------
 application.post('/fileupload', upload.single('file'), function(request, response){	
-	
 	response.json({ success: true });
 });
 
@@ -204,11 +196,12 @@ application.post('/api/resumes', function(request, response){
 	var d = new Date();
 	var datetime = d.getDate() + '-' + d.getMonth() + '-' + d.getFullYear() + '-' + d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
 	flocation = '/uploads/';
+	ofilename = Date.now()+'-'+request.body.fname;
 	Resume.create({
 		Name: request.body.name, 
 		Email: request.body.email, 
 		OriginalFileName: request.body.fname,
-		NewFileName: request.body.fname+'_'+datetime,
+		NewFileName: ofilename,
 		FileLocation: flocation,
 		FileUploadDate: datetime,
 		done: false
@@ -227,10 +220,6 @@ application.get('/', function(request, response){
 application.get('/logadmin', function(request, response){
 	response.sendFile('login');
 });
-
-/*application.get('/logadmin', function(request, response){
-	response.render('login.html');
-});*/
 
 application.listen(port, function(){
 	console.log('Node Server is running on port: ' + port);
