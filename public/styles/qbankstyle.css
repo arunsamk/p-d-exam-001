@@ -2,13 +2,13 @@
 /* Styling for questionbank.html page */
 /* For the div to appear below the navbar */
 .qbankdiv{
-  margin-top: 100px;
+  margin-top: 85px;
   /*margin-left: 5px;*/
-  height: 100%;
+  /*height: 100%;*/
 }
 
 /*Styling for side navigation  */
-.sidenav{
+/*.sidenav{
     padding-top: 50px; 
     background-color: #f1f1f1; 
     max-height: 100%;
@@ -84,19 +84,28 @@ background: none;
   font-weight: bold;
   margin-bottom: 0;
   border-radius: 0;
+  width: 270px;
 }
 .qbankpage{
    background-color: #f1f1f1; 
 }
 .qsection{
-  border-left: 1px solid gray;
+  border-right: 3px solid black;
+}
+.navbar-default{
+    background-color: #6A6868;
+    border-color: #000000;
+    height: 100%;
+}
+.QAsection{
+margin-left: -30px;
 }/*
 .navbar-fixed-left {
   width: 140px;
   position: fixed;
   border-radius: 0;
   height: 100%;
-}
+}/*
 .navbar-fixed-left .navbar-nav > li {
   float: none;  /* Cancel default li float: left */
   /*width: 139px;
