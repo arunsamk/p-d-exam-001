@@ -95,11 +95,15 @@ background: none;
 .navbar-default{
     background-color: #6A6868;
     border-color: #000000;
+    
     height: 100%;
 }
 .QAsection{
 margin-left: -30px;
-}/*
+}.container{
+  overflow: hidden;
+}
+/*
 .navbar-fixed-left {
   width: 140px;
   position: fixed;
